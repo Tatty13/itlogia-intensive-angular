@@ -140,8 +140,11 @@ export class AppComponent {
   constructor(private fb: FormBuilder) {
   }
 
-  scrollTo(target: HTMLElement) {
+  scrollTo(target: HTMLElement, product?: any) {
     target.scrollIntoView({behavior: 'smooth'});
+    if (product) {
+      this.form.patchValue({order: `${product.title} (${product.price} ${this.currency})`});
+    }
   }
 
   confirmOrder() {

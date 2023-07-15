@@ -86,7 +86,7 @@
             <div class="products__item-weight">{{product.weight}} гр</div>
           </div>
           <div class="products__item-action">
-            <button class="button products__item-btn" (click)="scrollTo(order)">
+            <button class="button products__item-btn" (click)="scrollTo(order, product)">
               <span>Заказать</span>
               <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -110,7 +110,7 @@
       <div class="order__form-inputs" [formGroup]="form">
         <div class="order__form-input"
              [class]="{'error': form.get('order')?.invalid && (form.get('order')?.dirty || form.get('order')?.touched)}">
-          <input type="text" placeholder="Ваш заказ" id="burger" formControlName="order">
+          <input type="text" placeholder="Выберите товар в списке" id="burger" formControlName="order" readonly>
         </div>
         <div class="order__form-input"
              [class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)}">
