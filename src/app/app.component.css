@@ -1,0 +1,279 @@
+.main {
+  overflow: hidden;
+  background: url("../assets/images/main_bg.png") top center / cover;
+}
+
+.header {
+  padding: 40px 0;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  /*justify-content: space-between;*/
+}
+
+.logo img {
+  vertical-align: bottom;
+}
+
+.menu {
+  margin-left: 191px;
+}
+
+.menu__list {
+  display: flex;
+  gap: 88px;
+  list-style: none;
+}
+
+.menu__link {
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer; /*default value for links*/
+}
+
+.currency {
+  box-sizing: border-box;
+  margin-left: auto;
+  padding: 6px;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+  cursor: pointer;
+  user-select: none;
+}
+
+.main-content {
+  padding-top: 103px;
+  padding-bottom: 199px;
+}
+
+.main-content .container {
+  position: relative;
+  z-index: 1;
+}
+
+.main-content__info {
+  max-width: 608px;
+}
+
+.main-content__small-info {
+  display: inline-block;
+  padding: 12px 16px;
+  font-size: 18px;
+  background: #D3320F;
+  border-radius: 100px;
+}
+
+.main-content__title {
+  margin-bottom: 56px;
+  font-family: Merriweather, 'Times New Roman', Georgia, serif;
+  font-size: 120px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.main-content__text {
+  margin-bottom: 56px;
+  font-size: 24px;
+}
+
+.main-content__image {
+  position: absolute;
+  top: -123px;
+  left: calc(100% - 991px);
+  z-index: -1;
+}
+
+.why {
+  background: url("../assets/images/whybg.png") top center / cover;
+  padding-bottom: 180px;
+}
+
+.why__items {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 312px);
+  justify-content: center;
+  gap: 100px;
+  list-style: none;
+}
+
+.why__item {
+  text-align: center;
+}
+
+.why__item-img {
+
+}
+
+.why__item-title {
+  padding: 24px 0;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.why__item-text {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.products {
+  padding-bottom: 180px;
+  background: url("../assets/images/burgers_bg.png") center no-repeat;
+}
+
+.products__items {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 384px);
+  gap: 24px;
+  list-style: none;
+}
+
+.products__item {
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #353535;
+  background: #211A16;
+}
+
+.products__item-img {
+  height: 250px;
+}
+
+.products__item-img img {
+  max-width: 100%;
+}
+
+.products__item-title {
+  padding: 24px 0;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.products__item-text {
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.products__item-extra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.products__item-price {
+  margin-bottom: 8px;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.products__item-weight {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #757575;
+}
+
+.products__item-action {
+
+}
+
+.button.products__item-btn {
+  width: 182px;
+  height: 62px;
+  gap: 10px;
+}
+
+.order {
+  padding-bottom: 180px;
+  background: url("../assets/images/order_bg.png") top right no-repeat;
+  overflow: hidden;
+}
+
+.order .container {
+  position: relative;
+  z-index: 1;
+}
+
+.order__img {
+  position: absolute;
+  top: 0;
+  right: calc(100% - 764px);
+  z-index: -1;
+}
+
+.order__form {
+  margin-top: 60px;
+  margin-left: 674px;
+  padding: 60px 40px;
+  max-width: 426px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  border: 1px solid #353535;
+  background: #211A16;
+}
+
+.order__form-text {
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.order__form-inputs {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order__form-input {
+  width: 344px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(95.61deg, #DA8023 0%, #E2B438 100%);
+  border-radius: 8px;
+}
+
+.order__form-input input {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  padding: 20px 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #fff;
+  background: #211A16;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.order__form-inputs .button {
+  width: 344px;
+}
+
+.footer {
+  padding: 60px 0;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rights {
+  font-size: 16px;
+  line-height: 20px;
+}
