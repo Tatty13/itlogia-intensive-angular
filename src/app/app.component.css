@@ -245,6 +245,10 @@
   border-radius: 8px;
 }
 
+.order__form-input.error {
+  background: #D3320F;
+}
+
 .order__form-input input {
   width: calc(100% - 2px);
   height: calc(100% - 2px);

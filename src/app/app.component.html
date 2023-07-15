@@ -8,17 +8,18 @@
       <nav class="menu">
         <ul class="menu__list">
           <li class="menu__item">
-            <a data-link="why" class="menu__link">Почему у нас</a>
+            <a class="menu__link" (click)="scrollTo(why)">Почему у нас</a>
           </li>
           <li class="menu__item">
-            <a data-link="products" class="menu__link">Меню бургеров</a>
+            <a class="menu__link" (click)="scrollTo(products)">Меню бургеров</a>
           </li>
           <li class="menu__item">
-            <a data-link="order" class="menu__link">Оформление заказа</a>
+            <a class="menu__link" (click)="scrollTo(order)">Оформление заказа</a>
           </li>
         </ul>
       </nav>
-      <div class="currency" title="Изменить валюту" id="change-currency">$</div>
+      <div class="currency" title="Изменить валюту" id="change-currency"
+           (click)="changeCurrency()">{{currency}}</div>
     </div>
   </header>
 
@@ -31,7 +32,7 @@
           вкусом наших бургеров.
           Готовим для вас лучшие бургеры в городе из отборной мраморной говядины.</p>
         <div class="main-content__action">
-          <button class="button" id="main-action-btn">Смотреть меню</button>
+          <button class="button" id="main-action-btn" (click)="scrollTo(products)">Смотреть меню</button>
         </div>
       </div>
       <img src="./assets/images/main_burger.png" alt="Big burger" class="main-content__image">
@@ -40,7 +41,7 @@
 
 </section>
 
-<section class="why" id="why">
+<section class="why" id="why" #why>
   <div class="container">
     <h2 class="why__title common-title">почему нас выбирают?</h2>
     <ul class="why__items">
@@ -69,288 +70,23 @@
   </div>
 </section>
 
-<section class="products" id="products">
+<section class="products" id="products" #products>
   <div class="container">
     <h2 class="products__title common-title">выберите свой бургер</h2>
     <ul class="products__items">
-      <li class="products__item">
+      <li class="products__item" *ngFor="let product of productsData">
         <div class="products__item-img">
-          <img src="./assets/images/1.png" alt="Бургер чеддер & бекон">
+          <img src="./assets/images/{{product.image}}" alt="{{product.title}}">
         </div>
-        <h3 class="products__item-title">Бургер чеддер & бекон</h3>
-        <p class="products__item-text">Котлета из говядины криспи, булочка, томат, сыр Чеддер, грудинка, лук красный,
-          салат айсбер, майонез, кетчуп, сырный соус</p>
+        <h3 class="products__item-title">{{product.title}}</h3>
+        <p class="products__item-text">{{product.text}}</p>
         <div class="products__item-extra">
           <div class="products-item-info">
-            <div class="products__item-price" data-base-price="8">8 $</div>
-            <div class="products__item-weight">360 гр</div>
+            <div class="products__item-price">{{product.price}} {{currency}}</div>
+            <div class="products__item-weight">{{product.weight}} гр</div>
           </div>
           <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/2.png" alt="Бургер BBQ с беконом и курицей">
-        </div>
-        <h3 class="products__item-title">BBQ с беконом и курицей</h3>
-        <p class="products__item-text">Булочка бриошь с кунжутом, куриная котлета, сыр чеддер, томат, огурец
-          маринованный, лук маринованный, салат Ромен, бекон, соус BBQ</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="7">7 $</div>
-            <div class="products__item-weight">390 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/3.png" alt="Дабл биф бургер">
-        </div>
-        <h3 class="products__item-title">Дабл биф бургер</h3>
-        <p class="products__item-text">Две говяжьи котлеты, сыр чеддер, салат романо, маринованные огурцы, свежий томат,
-          бекон, красный лук, соус бургер, горчица</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="10">10 $</div>
-            <div class="products__item-weight">420 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/4.png" alt="Баварский бургер">
-        </div>
-        <h3 class="products__item-title">Баварский бургер</h3>
-        <p class="products__item-text">Булочка для бургера, говяжья котлета, красный лук, сыр, охотничья колбаска, соус
-          барбекю, соус сырный, салат айсберг</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="7">7 $</div>
-            <div class="products__item-weight">220 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/5.png" alt="Бекон чизбургер">
-        </div>
-        <h3 class="products__item-title">Бекон чизбургер</h3>
-        <p class="products__item-text">Булочка для бургера, говяжья котлета, грудинка, помидор, огурец маринованный,
-          сыр, сырный соус, кетчуп, зелень</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="8">8 $</div>
-            <div class="products__item-weight">220 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/6.png" alt="Индиана бургер">
-        </div>
-        <h3 class="products__item-title">Индиана бургер</h3>
-        <p class="products__item-text">Булочка для бургера, котлета куриная, грудинка, яйцо, огурец маринованный, криспи
-          лук, кетчуп, соус сырный, горчица, зелень</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="9">9 $</div>
-            <div class="products__item-weight">320 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/7.png" alt="Вегги бургер">
-        </div>
-        <h3 class="products__item-title">Вегги бургер</h3>
-        <p class="products__item-text">Булочка для бургера, вегетарианская котлета, красный лук, сыр, свежий томат, соус
-          барбекю, соус сырный, салат айсберг</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="8">8 $</div>
-            <div class="products__item-weight">280 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/8.png" alt="Плаксивый Джо">
-        </div>
-        <h3 class="products__item-title">Плаксивый Джо</h3>
-        <p class="products__item-text">Булочка для бургера, говяжья котлета, грудинка, помидор, огурец маринованный,
-          красный лук, сыр, перец халапеньо, кетчуп, зелень</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="7">7 $</div>
-            <div class="products__item-weight">380 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/9.png" alt="Двойной чиз бургер">
-        </div>
-        <h3 class="products__item-title">Двойной чиз бургер</h3>
-        <p class="products__item-text">Булочка для бургера, две говяжьи котлеты, двойной сыр чеддар, огурец
-          маринованный, криспи лук, кетчуп, соус сырный, горчица, зелень</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="11">11 $</div>
-            <div class="products__item-weight">400 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/10.png" alt="Фрешбургер">
-        </div>
-        <h3 class="products__item-title">Фрешбургер</h3>
-        <p class="products__item-text">Булочка для бургера, говяжья котлета, бекон, сыр чеддар, яйцо, салями, соус
-          барбекю, соус сырный, салат айсберг, свежий томат</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="9">9 $</div>
-            <div class="products__item-weight">300 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/11.png" alt="Цуккини бургер">
-        </div>
-        <h3 class="products__item-title">Цуккини бургер</h3>
-        <p class="products__item-text">Булочка для бургера, вегетарианская котлета из нута, цуккини на гриле, помидор,
-          огурец маринованный, сыр, горчичный соус, кетчуп, зелень</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="8">8 $</div>
-            <div class="products__item-weight">320 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
-              <span>Заказать</span>
-              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17 18.5C17.5304 18.5 18.0391 18.7107 18.4142 19.0858C18.7893 19.4609 19 19.9696 19 20.5C19 21.0304 18.7893 21.5391 18.4142 21.9142C18.0391 22.2893 17.5304 22.5 17 22.5C16.4696 22.5 15.9609 22.2893 15.5858 21.9142C15.2107 21.5391 15 21.0304 15 20.5C15 19.39 15.89 18.5 17 18.5ZM1 2.5H4.27L5.21 4.5H20C20.2652 4.5 20.5196 4.60536 20.7071 4.79289C20.8946 4.98043 21 5.23478 21 5.5C21 5.67 20.95 5.84 20.88 6L17.3 12.47C16.96 13.08 16.3 13.5 15.55 13.5H8.1L7.2 15.13L7.17 15.25C7.17 15.3163 7.19634 15.3799 7.24322 15.4268C7.29011 15.4737 7.3537 15.5 7.42 15.5H19V17.5H7C6.46957 17.5 5.96086 17.2893 5.58579 16.9142C5.21071 16.5391 5 16.0304 5 15.5C5 15.15 5.09 14.82 5.24 14.54L6.6 12.09L3 4.5H1V2.5ZM7 18.5C7.53043 18.5 8.03914 18.7107 8.41421 19.0858C8.78929 19.4609 9 19.9696 9 20.5C9 21.0304 8.78929 21.5391 8.41421 21.9142C8.03914 22.2893 7.53043 22.5 7 22.5C6.46957 22.5 5.96086 22.2893 5.58579 21.9142C5.21071 21.5391 5 21.0304 5 20.5C5 19.39 5.89 18.5 7 18.5ZM16 11.5L18.78 6.5H6.14L8.5 11.5H16Z"
-                  fill="#191411"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </li>
-      <li class="products__item">
-        <div class="products__item-img">
-          <img src="./assets/images/12.png" alt="Двойной бургер чеддар">
-        </div>
-        <h3 class="products__item-title">Двойной бургер чеддар</h3>
-        <p class="products__item-text">Булочка для бургера, котлета говяжья, грудинка, красный лук, огурец маринованный,
-          томат, кетчуп, двойной сыр чеддар, горчица, зелень</p>
-        <div class="products__item-extra">
-          <div class="products-item-info">
-            <div class="products__item-price" data-base-price="9">9 $</div>
-            <div class="products__item-weight">360 гр</div>
-          </div>
-          <div class="products__item-action">
-            <button class="button products__item-btn">
+            <button class="button products__item-btn" (click)="scrollTo(order)">
               <span>Заказать</span>
               <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -365,23 +101,27 @@
   </div>
 </section>
 
-<section class="order" id="order">
+<section class="order" id="order" #order>
   <div class="container">
     <h2 class="common-title order__title">оформление заказа</h2>
     <img src="./assets/images/order_image.png" alt="Бургер в коробке для доставки" class="order__img">
     <div class="order__form">
       <p class="order__form-text">Заполните все данные и наш менеджер свяжется с вами для подтверждения заказа</p>
-      <div class="order__form-inputs">
-        <div class="order__form-input">
-          <input type="text" placeholder="Ваш заказ" id="burger">
+      <div class="order__form-inputs" [formGroup]="form">
+        <div class="order__form-input"
+             [class]="{'error': form.get('order')?.invalid && (form.get('order')?.dirty || form.get('order')?.touched)}">
+          <input type="text" placeholder="Ваш заказ" id="burger" formControlName="order">
         </div>
-        <div class="order__form-input">
-          <input type="text" placeholder="Ваше имя" id="name">
+        <div class="order__form-input"
+             [class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)}">
+          <input type="text" placeholder="Ваше имя" id="name" formControlName="name">
         </div>
-        <div class="order__form-input">
-          <input type="text" placeholder="Ваш телефон" id="phone">
+        <div class="order__form-input"
+             [class]="{'error': form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)}">
+          <input type="text" placeholder="Ваш телефон" id="phone" formControlName="phone">
         </div>
-        <button class="button" id="order-action">Оформить заказ</button>
+        <button class="button" id="order-action" (click)="confirmOrder()" [disabled]="!form.valid">Оформить заказ
+        </button>
       </div>
     </div>
   </div>
