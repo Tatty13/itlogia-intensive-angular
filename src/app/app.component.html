@@ -76,14 +76,14 @@
     <ul class="products__items">
       <li class="products__item" *ngFor="let product of productsData">
         <div class="products__item-img">
-          <img src="./assets/images/{{product.image}}" alt="{{product.title}}">
+          <img src="{{product.image}}" alt="{{product.title}}">
         </div>
         <h3 class="products__item-title">{{product.title}}</h3>
         <p class="products__item-text">{{product.text}}</p>
         <div class="products__item-extra">
           <div class="products-item-info">
             <div class="products__item-price">{{product.price}} {{currency}}</div>
-            <div class="products__item-weight">{{product.weight}} гр</div>
+            <div class="products__item-weight">{{product.grams}} гр</div>
           </div>
           <div class="products__item-action">
             <button class="button products__item-btn" (click)="scrollTo(order, product)">
