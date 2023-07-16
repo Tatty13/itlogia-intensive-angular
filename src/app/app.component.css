@@ -32,6 +32,7 @@
   color: #fff;
   text-decoration: none;
   cursor: pointer; /*default value for links*/
+  transition: .3s;
 }
 
 .currency {
@@ -47,6 +48,16 @@
   border: 1px solid #FFF;
   cursor: pointer;
   user-select: none;
+  transition: .3s;
+}
+
+.currency:hover,
+.menu__link:hover {
+  opacity: .6;
+}
+
+.currency:active {
+  transform: scale(.98);
 }
 
 .main-content {
