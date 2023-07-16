@@ -1,8 +1,14 @@
 # BurgersApp
 
+---
+
 [![App screenshot](https://raw.githubusercontent.com/Tatty13/imgs-for-README/main/burgers.png)](https://tatty13.github.io/itlogia-intensive-angular/)
 
+---
+
 Landing page for a burger-shop as a part of the itlogia 7-days frontend intensive.
+
+---
 
 ## Features
 
