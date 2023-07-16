@@ -41,11 +41,11 @@ export class AppComponent {
 
   productsData: any;
 
-  constructor(private fb: FormBuilder, private appSevice: AppService) {
+  constructor(private fb: FormBuilder, private appService: AppService) {
   }
 
   ngOnInit() {
-    this.appSevice.getData().subscribe(data => this.productsData = data);
+    this.appService.getData().subscribe((data: any) => this.productsData = data);
   }
 
   scrollTo(target: HTMLElement, product?: any) {
@@ -57,12 +57,12 @@ export class AppComponent {
 
   confirmOrder() {
     if (this.form.valid) {
-      this.appSevice.sendOrder(this.form.value)
+      this.appService.sendOrder(this.form.value)
         .subscribe({
           next: (response: any) => {
             alert(response.message)
           },
-          error: (response) => {
+          error: (response: any) => {
             alert(response.error.message)
           },
         });
