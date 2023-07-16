@@ -14,6 +14,6 @@ export class AppService {
   }
 
   getData() {
-    return this.http.get('https://testologia.site/burgers-data')
+    return this.http.get('https://testologia.site/burgers-data?extra=black')
   }
 }
